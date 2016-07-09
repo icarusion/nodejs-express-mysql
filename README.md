@@ -60,7 +60,11 @@
 
 
 ##说明
+
 本工程需要提前安装和配置MySQL,如果需要可以再加入Redis来存储用户登录凭证,目前只是普通的session存储,时间为1天
+关于如何使用Express,可查看官网http://expressjs.com/
+关于如何使用sequelize,可查阅文档http://docs.sequelizejs.com/en/latest/
+
 
 ##安装
 ```
