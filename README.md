@@ -49,7 +49,7 @@
 │  │    │
 │  │    └─js
 │  │
-│  ├─template
+│  ├─template                            # 即View层
 │  │    │
 │  │    └─  signup.ejs                   # 使用ejs模板,即我们的后端需要渲染的html,如果是SPA应用,则一般不需要这个
 │  │
