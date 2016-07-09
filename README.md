@@ -73,7 +73,7 @@ npm install
 
 ##运行
 ```
-npm run dev
+npm run start
 ```
 
 ##建数据表
