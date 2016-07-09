@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <script type="text/javascript" src="/js/lib/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/js/lib/cookie/cookie.js"></script>
+</head>
+<body>
+<input type="text" class="fm_mail" placeholder="邮箱">
+<input type="text" class="fm_user" placeholder="用户昵称,选填">
+<input type="password" class="fm_passwd" placeholder="密码">
+<button class="btn_submit">注册</button>
+<br>
+<br>
+<br>
+
+<input type="text" class="fm_mail_in" placeholder="邮箱">
+<input type="password" class="fm_passwd_in" placeholder="密码">
+<button class="btn_submit_in">登录</button>
+
+<button class="btn_submit_info">我的信息</button>
+
+<script type="text/javascript">
+    $(function() {
+        $('.btn_submit').on('click', function() {
+            var mail = $('.fm_mail').val();
+            var name = $('.fm_user').val();
+            var passwd = $('.fm_passwd').val();
+
+            if (mail == '') {
+                alert('邮箱不能为空');
+                return false;
+            }
+
+            if (passwd == '') {
+                alert('密码不能为空');
+                return false;
+            }
+
+            $.ajax({
+                url: 'http://127.0.0.1:9800/user/signup',
+                data: {
+                    mail: mail,
+                    name: name,
+                    passwd: passwd
+                },
+                type: 'post',
+                success: function(data) {
+                    console.log(data);
+                }
+            })
+        });
+
+        $('.btn_submit_in').on('click', function() {
+            var mail = $('.fm_mail_in').val();
+            var passwd = $('.fm_passwd_in').val();
+
+            if (mail == '') {
+                alert('邮箱不能为空');
+                return false;
+            }
+
+            if (passwd == '') {
+                alert('密码不能为空');
+                return false;
+            }
+
+            $.ajax({
+                url: 'http://127.0.0.1:9800/user/signin',
+                data: {
+                    mail: mail,
+                    passwd: passwd
+                },
+                type: 'post',
+                success: function(data) {
+                    if (data.status_code != '0') {
+                        alert(data.msg);
+                    } else {
+                        Cookies.set('token', data.data.token, {
+                            expires: 1
+                        });
+                    }
+                }
+            })
+        });
+
+        $('.btn_submit_info').on('click', function() {
+            $.ajax({
+                url: 'http://127.0.0.1:9800/user/info',
+                data: {
+                    token: Cookies.get('token')
+                },
+                type: 'post',
+                success: function(data) {
+                    if (data.status_code != '0') {
+                        alert(data.msg);
+                    } else {
+                        console.log(data.data.user_info);
+                    }
+                }
+            })
+        });
+    });
+</script>
+</body>
+</html>

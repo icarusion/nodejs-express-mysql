@@ -1,0 +1,38 @@
+{
+  "name": "nodejs-express-mysql",
+  "version": "1.0.0",
+  "description": "A base nodejs project with Express,using MySQL and ORM of sequelize.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node web/main.js",
+    "tables": "node script/create_all_tables.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icarusion/nodejs-express-mysql.git"
+  },
+  "author": "Aresn",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "connect-redis": "^3.0.2",
+    "cookie-parser": "^1.4.1",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "md5": "^2.1.0",
+    "moment": "^2.13.0",
+    "morgan": "^1.7.0",
+    "mysql": "^2.10.2",
+    "node-uuid": "^1.4.7",
+    "parseurl": "^1.3.1",
+    "q": "^1.4.1",
+    "redis": "^2.6.0-2",
+    "sequelize": "^3.23.0"
+  },
+  "bugs": {
+    "url": "https://github.com/icarusion/nodejs-express-mysql/issues"
+  },
+  "homepage": "https://github.com/icarusion/nodejs-express-mysql#readme"
+}
