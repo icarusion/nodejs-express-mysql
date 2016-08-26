@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var parseurl = require('parseurl');
 var path = require('path');
 var logger = require('morgan');
+var compression = require('compression');
 var render = require('./handler/base_handler');
 var config = require('.././config/config');
 
@@ -19,6 +20,7 @@ var bodyParser = require('body-parser');
 /**
  * 路由扩展
  */
+app.use(compression());
 
 app.set('views', path.join(__dirname, './template'));
 app.set('view engine', 'ejs');
@@ -51,7 +53,11 @@ app.use(function (req, res, next) {
     next()
 });
 
-app.use(express.static( path.join(__dirname, 'static') ));
+var static_opts = {
+    maxAge: 31536999999
+};
+
+app.use(express.static( path.join(__dirname, 'static'), static_opts ));
 
 app.use(render);
 
